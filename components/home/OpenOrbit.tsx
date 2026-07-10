@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from 'react';
 import ScrollReveal from '@/components/common/ScrollReveal';
+import { submitOpenOrbitWaitlist } from '@/app/actions/submitConsultation';
 
 const features = [
   'Startup workshops',
@@ -14,14 +15,22 @@ const features = [
 export default function OpenOrbit() {
   const [formData, setFormData] = useState({ name: '', email: '', linkedin: '' });
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    // Log for now — will integrate with backend later
-    console.log('Open Orbit waitlist:', formData);
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 5000);
-    setFormData({ name: '', email: '', linkedin: '' });
+    setIsSubmitting(true);
+
+    try {
+      await submitOpenOrbitWaitlist(formData);
+      setSubmitted(true);
+      setTimeout(() => setSubmitted(false), 5000);
+      setFormData({ name: '', email: '', linkedin: '' });
+    } catch (error) {
+      console.error('Waitlist submission error:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -81,6 +90,7 @@ export default function OpenOrbit() {
                       className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 text-sm focus:border-amber-400/50 focus:outline-none transition-colors"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      disabled={isSubmitting}
                     />
                     <input
                       type="email"
@@ -89,6 +99,7 @@ export default function OpenOrbit() {
                       className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 text-sm focus:border-amber-400/50 focus:outline-none transition-colors"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      disabled={isSubmitting}
                     />
                     <input
                       type="url"
@@ -96,12 +107,14 @@ export default function OpenOrbit() {
                       className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 text-sm focus:border-amber-400/50 focus:outline-none transition-colors"
                       value={formData.linkedin}
                       onChange={(e) => setFormData({ ...formData, linkedin: e.target.value })}
+                      disabled={isSubmitting}
                     />
                     <button
                       type="submit"
-                      className="w-full py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-400 text-[var(--color-bg-dark)] font-display font-bold text-sm tracking-wide hover:shadow-[0_8px_24px_rgba(245,158,11,0.3)] hover:-translate-y-0.5 transition-all duration-400"
+                      disabled={isSubmitting}
+                      className="w-full py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-400 text-[var(--color-bg-dark)] font-display font-bold text-sm tracking-wide hover:shadow-[0_8px_24px_rgba(245,158,11,0.3)] hover:-translate-y-0.5 transition-all duration-400 disabled:opacity-70"
                     >
-                      Join The Open Orbit
+                      {isSubmitting ? 'Joining...' : 'Join The Open Orbit'}
                     </button>
                   </form>
                 )}

@@ -75,13 +75,11 @@ export default function Footer() {
               <h4 className="overline text-white/30 mb-5">Connect</h4>
               <ul className="flex flex-col gap-3">
                 <li>
-                  <a href="#" className="text-sm text-white/50 hover:text-white transition-colors duration-300">
-                    Twitter / X
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-sm text-white/50 hover:text-white transition-colors duration-300">
-                    LinkedIn
+                  <a
+                    href="mailto:satya@larsva.com"
+                    className="text-sm text-white/50 hover:text-white transition-colors duration-300"
+                  >
+                    Email Us
                   </a>
                 </li>
                 <li>
@@ -100,10 +98,6 @@ export default function Footer() {
         {/* Bottom */}
         <div className="flex flex-col md:flex-row justify-between items-center text-xs text-white/25 gap-3">
           <p>&copy; {new Date().getFullYear()} Larsva. All rights reserved.</p>
-          <div className="flex gap-6">
-            <a href="#" className="hover:text-white/50 transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white/50 transition-colors">Terms of Service</a>
-          </div>
         </div>
       </div>
     </footer>

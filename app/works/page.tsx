@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import ScrollReveal from '@/components/common/ScrollReveal';
 import type { CaseStudy } from '@/types';
 
@@ -40,6 +41,7 @@ const caseStudies: CaseStudy[] = [
     approach: 'Built a seamless web platform with property listings, search filters, and a management dashboard. Focused on mobile-first design and fast load times.',
     outcome: 'Launched a fully functional PG rental platform that streamlined the discovery and booking process for both tenants and property owners.',
     tags: ['Web App', 'Real Estate', 'MVP'],
+    image: '/images/manapgrent.png',
     url: 'https://manapgrent.in/',
   },
   {
@@ -50,6 +52,7 @@ const caseStudies: CaseStudy[] = [
     approach: 'Designed and developed an educational platform with course modules, resource libraries, and a modern learning experience. Optimized for engagement and retention.',
     outcome: 'Created a comprehensive EdTech platform that empowers the next generation with cutting-edge AI education and career resources.',
     tags: ['EdTech', 'AI', 'Platform'],
+    image: '/images/bschoolofai.png',
     url: 'https://bschoolofai.com',
   },
   {
@@ -60,6 +63,7 @@ const caseStudies: CaseStudy[] = [
     approach: 'Crafted a premium travel and accommodation booking experience with stunning visual design, fluid interactions, and an intuitive booking flow.',
     outcome: 'Delivered a visually premium travel platform that elevated the booking experience and positioned the brand in the luxury travel segment.',
     tags: ['Travel', 'Booking', 'Premium'],
+    image: '/images/flycastles.png',
     url: 'https://flycastles.com',
   },
   // Placeholder validation project
@@ -141,7 +145,19 @@ export default function WorksPage() {
                   <ScrollReveal key={study.id} delay={i * 100}>
                     <div className="group h-full flex flex-col bg-white rounded-2xl border border-gray-100 hover:border-[var(--color-accent)]/20 shadow-sm hover:shadow-[0_16px_48px_rgba(0,0,0,0.06)] transition-all duration-500 hover:-translate-y-1 overflow-hidden">
                       {/* Top accent bar */}
-                      <div className="h-1.5 w-full gradient-teal" />
+                      {study.image ? (
+                        <div className="relative w-full h-48 overflow-hidden">
+                          <Image
+                            src={study.image}
+                            alt={`${study.title} screenshot`}
+                            fill
+                            className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          />
+                        </div>
+                      ) : (
+                        <div className="h-1.5 w-full gradient-teal" />
+                      )}
 
                       <div className="p-7 flex flex-col flex-grow">
                         {/* Tags */}

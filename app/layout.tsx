@@ -23,6 +23,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://larsva.com'),
   title: {
     default: 'Larsva — Turn Your Startup Idea into a Launch-Ready Business',
     template: '%s | Larsva',
@@ -80,6 +81,9 @@ export default function RootLayout({
                 email: 'satya@larsva.com',
                 contactType: 'customer service',
               },
+              // TODO: Add your social profile URLs here, e.g.:
+              // 'https://linkedin.com/company/larsva',
+              // 'https://twitter.com/larsva'
               sameAs: [],
             }),
           }}
