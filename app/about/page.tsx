@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: 'About Us — Our Story & Mission',
   description: 'Larsva was created to bridge the gap between great startup ideas and successful execution. Learn about our mission to empower aspiring founders.',
   keywords: ['Startup Consulting India', 'Founder Advisory Services', 'Startup Launch Services'],
+  alternates: {
+    canonical: '/about',
+  },
   openGraph: {
     title: 'About Larsva — Helping Founders Move From Idea To Execution',
     description: 'Learn how Larsva helps working professionals validate startup ideas, build MVPs, and launch professionally.',

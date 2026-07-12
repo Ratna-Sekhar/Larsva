@@ -24,6 +24,9 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://larsva.com'),
+  alternates: {
+    canonical: '/',
+  },
   title: {
     default: 'Larsva — Turn Your Startup Idea into a Launch-Ready Business',
     template: '%s | Larsva',

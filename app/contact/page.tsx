@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: 'Contact Us — Request a Founder Consultation',
   description: 'Request a founder consultation with Larsva. Share your startup idea and we\'ll contact you within 24 hours to discuss validation, MVP development, or launch support.',
   keywords: ['Contact Larsva', 'Startup Consultation India', 'Founder Advisory Contact'],
+  alternates: {
+    canonical: '/contact',
+  },
   openGraph: {
     title: 'Contact Larsva — Let\'s Build Something Meaningful',
     description: 'Share your startup idea. We\'ll help you validate it, build your MVP, and launch professionally.',

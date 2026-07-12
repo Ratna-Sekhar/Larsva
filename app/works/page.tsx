@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: 'Our Works — Portfolio & Case Studies',
   description: 'Explore startup validation projects, MVP development case studies, and launch support work by Larsva. See how we help founders go from idea to launch.',
   keywords: ['Startup Portfolio', 'MVP Case Studies', 'Startup Validation Projects'],
+  alternates: {
+    canonical: '/works',
+  },
   openGraph: {
     title: 'Our Works — Larsva Portfolio & Case Studies',
     description: 'See how Larsva helps founders validate ideas, build MVPs, and launch startups.',
