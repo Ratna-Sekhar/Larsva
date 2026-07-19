@@ -76,7 +76,7 @@ export default function RootLayout({
               '@type': 'Organization',
               name: 'Larsva',
               url: 'https://larsva.com',
-              logo: 'https://larsva.com/logo.svg',
+              logo: 'https://larsva.com/images/larsva-logo.png',
               description:
                 'Larsva helps ambitious working professionals and aspiring founders validate startup ideas, build MVPs, and launch professionally.',
               contactPoint: {

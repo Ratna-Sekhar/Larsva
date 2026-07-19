@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 const footerLinks = {
   company: [
@@ -22,10 +23,13 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-16">
           <div className="max-w-[360px]">
             <Link href="/" className="flex items-center mb-5">
-              <span className="font-heading font-bold text-2xl tracking-tight">
-                <span className="gradient-text">L</span>
-                <span className="text-white">arsva</span>
-              </span>
+              <Image
+                src="/images/larsva-logo.png"
+                alt="Larsva"
+                width={120}
+                height={40}
+                className="h-10 w-auto object-contain"
+              />
             </Link>
             <p className="text-sm leading-relaxed text-white/40 mb-6">
               Helping ambitious working professionals and aspiring founders validate startup ideas, build MVPs, and launch professionally.
