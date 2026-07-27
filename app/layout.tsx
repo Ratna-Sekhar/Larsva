@@ -81,13 +81,14 @@ export default function RootLayout({
                 'Larsva helps ambitious working professionals and aspiring founders validate startup ideas, build MVPs, and launch professionally.',
               contactPoint: {
                 '@type': 'ContactPoint',
-                email: 'satya@larsva.com',
+                email: 'info@larsva.com',
                 contactType: 'customer service',
               },
-              // TODO: Add your social profile URLs here, e.g.:
-              // 'https://linkedin.com/company/larsva',
-              // 'https://twitter.com/larsva'
-              sameAs: [],
+              sameAs: [
+                'https://www.linkedin.com/company/larsva-opc/',
+                'https://www.instagram.com/larsva_official',
+                'https://www.youtube.com/@Larsva',
+              ],
             }),
           }}
         />

@@ -38,7 +38,7 @@ export default function OpenOrbit() {
       <div className="absolute top-[-20%] left-[-15%] w-[50%] h-[60%] bg-[radial-gradient(circle,rgba(245,158,11,0.05),transparent_70%)] rounded-full pointer-events-none" />
 
       <div className="container-wide relative z-10">
-        <div className="flex flex-col lg:flex-row gap-16 lg:gap-20 items-start">
+        <div className="flex flex-col lg:flex-row gap-16 lg:gap-20 items-stretch">
           {/* Left: Content */}
           <div className="flex-1">
             <ScrollReveal>
@@ -67,9 +67,11 @@ export default function OpenOrbit() {
           {/* Right: Waitlist Form */}
           <div className="flex-1 w-full max-w-[480px]">
             <ScrollReveal delay={200}>
-              <div className="bg-[var(--color-bg-dark-card)] rounded-2xl p-8 border border-white/8">
+              <div className="bg-[var(--color-bg-dark-card)] rounded-2xl p-8 border border-white/8 flex flex-col h-full">
                 <h3 className="font-heading font-bold text-xl text-white mb-2">Join The Open Orbit</h3>
                 <p className="text-sm text-white/40 mb-6">Get early access to founder events and resources.</p>
+
+                <div className="mt-auto">
 
                 {submitted ? (
                   <div className="flex items-center gap-3 p-5 rounded-xl bg-amber-400/10 border border-amber-400/20">
@@ -118,6 +120,7 @@ export default function OpenOrbit() {
                     </button>
                   </form>
                 )}
+                </div>
               </div>
             </ScrollReveal>
           </div>

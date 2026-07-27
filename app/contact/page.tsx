@@ -58,8 +58,8 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-display font-semibold text-sm mb-1">Email</h3>
-                      <a href="mailto:satya@larsva.com" className="text-sm text-[var(--color-accent)] hover:underline">
-                        satya@larsva.com
+                      <a href="mailto:info@larsva.com" className="text-sm text-[var(--color-accent)] hover:underline">
+                        info@larsva.com
                       </a>
                     </div>
                   </div>

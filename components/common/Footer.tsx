@@ -35,10 +35,10 @@ export default function Footer() {
               Helping ambitious working professionals and aspiring founders validate startup ideas, build MVPs, and launch professionally.
             </p>
             <a
-              href="mailto:satya@larsva.com"
+              href="mailto:info@larsva.com"
               className="text-sm text-[var(--color-accent)] hover:underline font-medium"
             >
-              satya@larsva.com
+              info@larsva.com
             </a>
           </div>
 
@@ -80,7 +80,7 @@ export default function Footer() {
               <ul className="flex flex-col gap-3">
                 <li>
                   <a
-                    href="mailto:satya@larsva.com"
+                    href="mailto:info@larsva.com"
                     className="text-sm text-white/50 hover:text-white transition-colors duration-300"
                   >
                     Email Us
@@ -90,6 +90,36 @@ export default function Footer() {
                   <Link href="/contact" className="text-sm text-white/50 hover:text-white transition-colors duration-300">
                     Contact Us
                   </Link>
+                </li>
+                <li>
+                  <a
+                    href="https://www.linkedin.com/company/larsva-opc/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-white/50 hover:text-white transition-colors duration-300"
+                  >
+                    LinkedIn
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.instagram.com/larsva_official"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-white/50 hover:text-white transition-colors duration-300"
+                  >
+                    Instagram
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.youtube.com/@Larsva"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-white/50 hover:text-white transition-colors duration-300"
+                  >
+                    YouTube
+                  </a>
                 </li>
               </ul>
             </div>
