@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import ScrollReveal from '@/components/common/ScrollReveal';
+import OpenOrbit from '@/components/home/OpenOrbit';
 
 export const metadata: Metadata = {
   title: 'About Us — Our Story & Mission',
@@ -35,7 +36,7 @@ export default function AboutPage() {
       </section>
 
       {/* Story */}
-      <section className="py-24 md:py-32 bg-white">
+      <section className="py-16 md:py-20 bg-white">
         <div className="mx-auto max-w-[800px] px-6 md:px-10">
           <ScrollReveal>
             <span className="overline text-[var(--color-accent)] mb-4 block">Our Story</span>
@@ -61,65 +62,22 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Founder */}
-      <section className="py-24 md:py-32 bg-[var(--color-bg-primary)] grid-pattern">
-        <div className="mx-auto max-w-[900px] px-6 md:px-10">
-          <ScrollReveal>
-            <div className="flex flex-col md:flex-row gap-12 items-center">
-              {/* Headshot placeholder */}
-              <div className="flex-shrink-0">
-                <div className="w-48 h-48 md:w-56 md:h-56 rounded-2xl bg-[var(--color-accent-light)] flex items-center justify-center border border-[var(--color-accent)]/10 overflow-hidden">
-                  <div className="flex flex-col items-center gap-2">
-                    <div className="w-20 h-20 rounded-full bg-[var(--color-accent)]/20 flex items-center justify-center">
-                      <span className="font-heading font-bold text-2xl text-[var(--color-accent)]">ST</span>
-                    </div>
-                    <span className="text-xs text-[var(--color-text-muted)] font-display">Photo Coming Soon</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Bio */}
-              <div>
-                <span className="overline text-[var(--color-accent)] mb-3 block">Founder</span>
-                <h2 className="font-heading font-bold text-2xl tracking-tight mb-2">
-                  V.N.S. Satya Teja
-                </h2>
-                <p className="text-sm text-[var(--color-accent)] font-display font-semibold mb-5">
-                  Founder & CEO, Larsva
-                </p>
-                <div className="flex flex-col gap-4 text-[var(--color-text-secondary)] leading-relaxed text-[0.95rem]">
-                  <p>
-                    Data Science professional with experience in product, AI, analytics, and
-                    technology. Passionate about helping aspiring founders validate ideas and
-                    launch startups.
-                  </p>
-                  <p>
-                    Having seen too many great ideas die from lack of structure and execution,
-                    Satya built Larsva to provide founders with the exact framework they need to
-                    go from concept to a live product.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
       {/* Vision & Mission */}
-      <section className="py-24 md:py-32 bg-white">
-        <div className="mx-auto max-w-[900px] px-6 md:px-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+      <section className="py-16 md:py-20 bg-[var(--color-bg-dark)] grid-pattern-dark relative overflow-hidden">
+        <div className="absolute top-[-20%] right-[-10%] w-[40%] h-[50%] bg-[radial-gradient(circle,rgba(0,194,168,0.06),transparent_70%)] rounded-full pointer-events-none" />
+        <div className="mx-auto max-w-[900px] px-6 md:px-10 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <ScrollReveal>
-              <div className="p-8 rounded-2xl bg-[var(--color-bg-primary)] border border-gray-100">
-                <div className="w-12 h-12 rounded-xl bg-[var(--color-accent-light)] text-[var(--color-accent)] flex items-center justify-center mb-5">
+              <div className="p-8 rounded-2xl bg-[var(--color-bg-dark-card)] border border-white/8 h-full">
+                <div className="w-12 h-12 rounded-xl bg-[var(--color-accent)]/15 text-[var(--color-accent)] flex items-center justify-center mb-5">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                     <circle cx="12" cy="12" r="10" />
                     <circle cx="12" cy="12" r="4" />
                     <circle cx="12" cy="12" r="1" fill="currentColor" stroke="none" />
                   </svg>
                 </div>
-                <h3 className="font-heading font-bold text-xl tracking-tight mb-3">Our Vision</h3>
-                <p className="text-[var(--color-text-secondary)] leading-relaxed">
+                <h3 className="font-heading font-bold text-xl tracking-tight mb-3 text-white">Our Vision</h3>
+                <p className="text-white/45 leading-relaxed">
                   To empower aspiring founders to build successful startups through structured
                   validation and execution.
                 </p>
@@ -127,15 +85,15 @@ export default function AboutPage() {
             </ScrollReveal>
 
             <ScrollReveal delay={150}>
-              <div className="p-8 rounded-2xl bg-[var(--color-bg-primary)] border border-gray-100">
-                <div className="w-12 h-12 rounded-xl bg-[var(--color-accent-light)] text-[var(--color-accent)] flex items-center justify-center mb-5">
+              <div className="p-8 rounded-2xl bg-[var(--color-bg-dark-card)] border border-white/8 h-full">
+                <div className="w-12 h-12 rounded-xl bg-[var(--color-accent)]/15 text-[var(--color-accent)] flex items-center justify-center mb-5">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
                     <polyline points="22 4 12 14.01 9 11.01" />
                   </svg>
                 </div>
-                <h3 className="font-heading font-bold text-xl tracking-tight mb-3">Our Mission</h3>
-                <p className="text-[var(--color-text-secondary)] leading-relaxed">
+                <h3 className="font-heading font-bold text-xl tracking-tight mb-3 text-white">Our Mission</h3>
+                <p className="text-white/45 leading-relaxed">
                   Reduce startup failure by helping founders make informed decisions before
                   investing significant time and money.
                 </p>
@@ -144,6 +102,9 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      {/* Community */}
+      <OpenOrbit />
 
       {/* CTA */}
       <section className="py-24 bg-[var(--color-bg-dark)] relative overflow-hidden">

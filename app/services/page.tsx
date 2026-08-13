@@ -1,348 +1,397 @@
-import type { Metadata } from 'next';
+'use client';
+
+import { useState } from 'react';
 import Link from 'next/link';
 import ScrollReveal from '@/components/common/ScrollReveal';
-import type { FAQ } from '@/types';
 
-export const metadata: Metadata = {
-  title: 'Services — Startup Validation, MVP Development & Launch',
-  description: 'Structured services for aspiring founders — Startup Validation Sprint (₹7,999), MVP Launch Sprint (₹49,999+), and Startup Launch Pack (₹14,999). Validate, build, and launch your startup.',
-  keywords: [
-    'Startup Validation Services India',
-    'MVP Development India',
-    'Startup Idea Validation',
-    'Build MVP for Startup',
-    'Startup Launch Services',
-  ],
-  openGraph: {
-    title: 'Larsva Services — Validate, Build & Launch Your Startup',
-    description: 'From idea validation to MVP development and launch preparation — structured services built for founders.',
-  },
-};
-
-const services = [
+const stages = [
   {
-    id: 'validation',
-    title: 'Startup Validation Sprint',
-    price: '₹7,999',
-    priceNote: 'One-time',
-    tagline: 'Validate before you invest.',
-    whoFor: 'Working professionals with a startup idea they want to validate before investing significant time and money. Ideal if you have 1-3 ideas and need data-driven clarity on which to pursue.',
-    deliverables: [
-      'Discovery Call & Idea Deep-Dive',
-      'Competitor Analysis Report',
-      'TAM SAM SOM Market Sizing',
-      'Customer Identification & Persona',
-      'Risk Assessment Matrix',
-      'Go / No-Go Validation Report',
+    number: '01',
+    label: 'I Have an Idea',
+    journey: 'Idea → Launch',
+    positioning: 'You bring the idea. We help turn it into something real.',
+    services: [
+      'Idea validation',
+      'Business & product strategy',
+      'MVP planning',
+      'Website development',
+      'App development',
+      'Product development',
+      'End-to-end execution',
     ],
-    process: [
-      'Initial discovery call to understand your ideas',
-      'Market research and competitive landscape analysis',
-      'Target customer identification and validation',
-      'Risk assessment and feasibility analysis',
-      'Structured report with clear recommendation',
-    ],
-    outcomes: [
-      'Clear Go / No-Go recommendation for up to 3 ideas',
-      'Validated understanding of market opportunity',
-      'Identified target customer segments',
-      'Risk-aware foundation for next steps',
-    ],
-    ctaText: 'Request Founder Consultation',
-    ctaHref: '/contact',
-    accent: 'var(--color-accent)',
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="14" cy="10" r="6" />
+        <path d="M11 16v3a3 3 0 006 0v-3" />
+        <path d="M14 22v3" />
+        <line x1="10" y1="25" x2="18" y2="25" />
+      </svg>
+    ),
   },
   {
-    id: 'mvp',
-    title: 'MVP Launch Sprint',
-    price: 'Starting at ₹49,999',
-    priceNote: 'Scope-dependent',
-    tagline: 'From validated idea to live product.',
-    whoFor: 'Founders with a validated startup idea ready to build. Perfect for aspiring entrepreneurs who need a professional development partner to create a launch-ready product without hiring a full team.',
-    deliverables: [
-      'Product Requirement Document',
-      'UX/UI Design & Prototyping',
-      'Full-Stack Development',
-      'AI/ML Integrations (where applicable)',
-      'Testing & Quality Assurance',
-      'Production Deployment',
+    number: '02',
+    label: "I'm Building",
+    journey: 'Build → Product',
+    positioning: "Already building? Let's help you build faster and better.",
+    services: [
+      'Websites',
+      'Web applications',
+      'Mobile applications',
+      'SaaS products',
+      'AI-powered products',
+      'Product enhancements',
+      'API & third-party integrations',
     ],
-    process: [
-      'Product planning and feature prioritization',
-      'UX/UI design with iterative feedback',
-      'Agile development with regular updates',
-      'Integration of AI features where applicable',
-      'Testing, deployment, and handover',
-    ],
-    outcomes: [
-      'Production-ready MVP deployed and live',
-      'Scalable architecture for future growth',
-      'Complete documentation and handover',
-      'Foundation for customer acquisition',
-    ],
-    ctaText: 'Request Founder Consultation',
-    ctaHref: '/contact',
-    accent: 'var(--color-accent)',
-    featured: true,
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M8 6L3 14L8 22" />
+        <path d="M20 6L25 14L20 22" />
+        <path d="M16 3L12 25" />
+      </svg>
+    ),
   },
   {
-    id: 'launch',
-    title: 'Startup Launch Pack',
-    price: '₹14,999',
-    priceNote: 'One-time',
-    tagline: 'Launch with presence and credibility.',
-    whoFor: 'Founders ready to launch who need a professional online presence. Ideal if you have a product but need help with branding, social presence, SEO, and launch preparation.',
-    deliverables: [
-      'LinkedIn Company Page Setup',
-      'Social Media Profile Configuration',
-      'SEO Fundamentals Implementation',
-      'Launch Content Strategy',
-      'Hiring & Team Planning Guide',
+    number: '03',
+    label: "I'm Going to Market",
+    journey: 'Product → Customers',
+    positioning: "Your product is ready. Now let's get it in front of the right people.",
+    services: [
+      'Go-to-market strategy',
+      'Marketing strategy',
+      'Social media',
+      'Content strategy',
+      'Branding',
+      'Lead generation',
+      'Customer acquisition',
     ],
-    process: [
-      'Brand positioning and messaging workshop',
-      'Social media setup and optimization',
-      'SEO foundation and keyword strategy',
-      'Launch content creation and scheduling',
-      'Growth planning and hiring roadmap',
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M14 25L5 16L8 13L12 17V3H16V17L20 13L23 16L14 25Z" />
+      </svg>
+    ),
+  },
+  {
+    number: '04',
+    label: "I'm Already Established",
+    journey: 'Established → Scale',
+    positioning: "Already running a business? Let's build what comes next.",
+    services: [
+      'New product development',
+      'Existing product enhancement',
+      'AI implementation',
+      'Business process automation',
+      'WhatsApp integrations',
+      'Chatbots',
+      'AI agents',
+      'Hiring & talent support',
+      'Technology consulting',
     ],
-    outcomes: [
-      'Professional online presence across platforms',
-      'SEO-optimized web presence',
-      'Content calendar for launch period',
-      'Clear hiring and growth roadmap',
-    ],
-    ctaText: 'Request Founder Consultation',
-    ctaHref: '/contact',
-    accent: 'var(--color-accent)',
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M4 22L10 16L14 20L24 6" />
+        <path d="M18 6H24V12" />
+      </svg>
+    ),
   },
 ];
 
-const faqs: FAQ[] = [
-  {
-    question: 'Do I need a technical background?',
-    answer: 'Not at all. Larsva is specifically designed for non-technical founders and working professionals. We handle all the technical complexity — from architecture decisions to deployment — so you can focus on your vision and business strategy.',
-  },
-  {
-    question: 'Can you help validate multiple ideas?',
-    answer: 'Yes! Our Startup Validation Sprint allows you to validate up to 3 startup ideas. We provide a structured Go / No-Go recommendation for each idea, helping you choose the one with the highest potential.',
-  },
-  {
-    question: 'How long does the MVP take?',
-    answer: 'Timeline depends on scope and complexity. Simple MVPs can be delivered in 2-4 weeks, while more complex products may take 6-8 weeks. We provide a detailed timeline estimate during our initial consultation.',
-  },
-  {
-    question: 'Can I launch without quitting my job?',
-    answer: 'Absolutely — this is exactly what Larsva is built for. Our services are designed for working professionals who want to build a startup alongside their career. We handle the heavy lifting so you can maintain your income while building your dream.',
-  },
-  {
-    question: 'What happens after the MVP is built?',
-    answer: 'After your MVP is live, you can use our Startup Launch Pack to build your online presence and prepare for customer acquisition. We also offer ongoing support and can help with iterations based on user feedback.',
-  },
+const processSteps = [
+  { title: 'Understand', description: 'We understand your idea, business and goals.' },
+  { title: 'Plan', description: 'We identify what needs to happen next.' },
+  { title: 'Build', description: 'We turn the plan into a working product or solution.' },
+  { title: 'Scale', description: 'We help improve, automate, market and grow.' },
 ];
 
 export default function ServicesPage() {
+  const [expandedStage, setExpandedStage] = useState<number | null>(null);
+
   return (
     <>
       {/* Hero */}
-      <section className="gradient-hero pt-36 pb-24 px-6 md:px-10 relative overflow-hidden">
-        <div className="absolute top-[-20%] right-[-10%] w-[40%] h-[50%] bg-[radial-gradient(circle,rgba(0,194,168,0.06),transparent_70%)] rounded-full pointer-events-none" />
-        <div className="mx-auto max-w-[800px] text-center relative z-10">
-          <span className="overline text-[var(--color-accent)] mb-5 block">Our Services</span>
-          <h1 className="font-heading font-bold text-[clamp(2.5rem,5vw,4rem)] tracking-tight leading-tight mb-6 text-white">
-            Services Built for{' '}
-            <span className="gradient-text">Founders</span>
+      <section className="gradient-hero pt-36 pb-28 px-6 md:px-10 relative overflow-hidden">
+        <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[60%] bg-[radial-gradient(circle,rgba(0,194,168,0.08),transparent_70%)] rounded-full pointer-events-none" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[50%] bg-[radial-gradient(circle,rgba(0,194,168,0.05),transparent_70%)] rounded-full pointer-events-none" />
+        <div className="absolute inset-0 grid-pattern-dark pointer-events-none" />
+
+        <div className="relative z-10 max-w-[800px] mx-auto text-center flex flex-col items-center">
+          <div className="animate-fade-in-down inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white/5 border border-white/10 font-display font-medium text-sm text-white/70 mb-8">
+            <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse-dot" />
+            Services
+          </div>
+
+          <h1 className="animate-fade-in-up delay-100 font-heading font-bold text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.08] tracking-[-0.02em] text-white mb-6">
+            Where are you in{' '}
+            <span className="gradient-text">your journey?</span>
           </h1>
-          <div className="section-divider mx-auto mb-6" />
-          <p className="text-lg text-white/45 max-w-[560px] mx-auto leading-relaxed">
-            Structured offerings to take your startup from idea to market — without hiring a full team.
+
+          <p className="animate-fade-in-up delay-200 text-lg md:text-xl text-white/50 max-w-[600px] leading-relaxed mb-10">
+            Tell us where you are. We&apos;ll help you figure out what&apos;s next.
           </p>
+
+          <div className="animate-fade-in-up delay-300">
+            <Link href="/contact" className="btn-primary text-[1.05rem] py-[18px] px-10">
+              Start a Conversation
+              <svg className="btn-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </Link>
+          </div>
+
+          {/* Journey path visualization */}
+          <div className="animate-fade-in-up delay-500 w-full max-w-[540px] mt-16">
+            <svg viewBox="0 0 540 50" fill="none" className="w-full h-auto">
+              {/* Connection lines */}
+              <line x1="68" y1="25" x2="202" y2="25" stroke="url(#svc-line-grad)" strokeWidth="1.5" />
+              <line x1="202" y1="25" x2="338" y2="25" stroke="url(#svc-line-grad)" strokeWidth="1.5" />
+              <line x1="338" y1="25" x2="472" y2="25" stroke="url(#svc-line-grad)" strokeWidth="1.5" />
+
+              {/* Nodes */}
+              <circle cx="68" cy="25" r="6" fill="#00C2A8" fillOpacity="0.25" />
+              <circle cx="68" cy="25" r="3" fill="#00C2A8" />
+              <text x="68" y="46" textAnchor="middle" fill="white" fillOpacity="0.4" fontSize="9" fontFamily="var(--font-display)" fontWeight="600">IDEA</text>
+
+              <circle cx="202" cy="25" r="6" fill="#00C2A8" fillOpacity="0.25" />
+              <circle cx="202" cy="25" r="3" fill="#00C2A8" />
+              <text x="202" y="46" textAnchor="middle" fill="white" fillOpacity="0.4" fontSize="9" fontFamily="var(--font-display)" fontWeight="600">BUILD</text>
+
+              <circle cx="338" cy="25" r="6" fill="#00C2A8" fillOpacity="0.25" />
+              <circle cx="338" cy="25" r="3" fill="#00C2A8" />
+              <text x="338" y="46" textAnchor="middle" fill="white" fillOpacity="0.4" fontSize="9" fontFamily="var(--font-display)" fontWeight="600">MARKET</text>
+
+              <circle cx="472" cy="25" r="8" fill="#00C2A8" fillOpacity="0.35" />
+              <circle cx="472" cy="25" r="4" fill="#00C2A8" />
+              <text x="472" y="46" textAnchor="middle" fill="white" fillOpacity="0.4" fontSize="9" fontFamily="var(--font-display)" fontWeight="600">SCALE</text>
+
+              <defs>
+                <linearGradient id="svc-line-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#00C2A8" stopOpacity="0.2" />
+                  <stop offset="100%" stopColor="#00C2A8" stopOpacity="0.6" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
         </div>
       </section>
 
-      {/* Services */}
-      {services.map((service, index) => (
-        <section
-          key={service.id}
-          id={service.id}
-          className={`py-24 md:py-28 px-6 md:px-10 ${
-            index % 2 === 0 ? 'bg-white' : 'bg-[var(--color-bg-primary)]'
-          }`}
-        >
-          <div className="mx-auto max-w-[1000px]">
-            <ScrollReveal>
-              {/* Header */}
-              <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
-                <div>
-                  <span className="overline text-[var(--color-accent)] mb-3 block">
-                    Service {String(index + 1).padStart(2, '0')}
-                  </span>
-                  <h2 className="font-heading font-bold text-[clamp(1.8rem,3.5vw,2.5rem)] tracking-tight mb-3">
-                    {service.title}
-                  </h2>
-                  <p className="text-[var(--color-text-secondary)] text-lg">{service.tagline}</p>
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="price-badge text-lg">{service.price}</span>
-                  {service.priceNote && (
-                    <span className="text-xs text-[var(--color-text-muted)] font-display">{service.priceNote}</span>
-                  )}
-                </div>
-              </div>
-            </ScrollReveal>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-              {/* Left column */}
-              <div className="flex flex-col gap-8">
-                <ScrollReveal>
-                  <div className="p-7 rounded-2xl bg-[var(--color-bg-primary)] border border-gray-100">
-                    <h3 className="font-heading font-bold text-lg mb-3 flex items-center gap-2">
-                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="var(--color-accent)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M17 21v-2a4 4 0 00-4-4H7a4 4 0 00-4 4v2" />
-                        <circle cx="10" cy="7" r="4" />
-                      </svg>
-                      Who It&apos;s For
-                    </h3>
-                    <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
-                      {service.whoFor}
-                    </p>
-                  </div>
-                </ScrollReveal>
-
-                <ScrollReveal delay={100}>
-                  <div className="p-7 rounded-2xl bg-[var(--color-bg-primary)] border border-gray-100">
-                    <h3 className="font-heading font-bold text-lg mb-4 flex items-center gap-2">
-                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="var(--color-accent)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                        <rect x="3" y="3" width="14" height="14" rx="2" />
-                        <path d="M7 7h6M7 10h6M7 13h4" />
-                      </svg>
-                      Deliverables
-                    </h3>
-                    <ul className="flex flex-col gap-2.5">
-                      {service.deliverables.map((item) => (
-                        <li key={item} className="flex items-center gap-2.5 text-sm text-[var(--color-text-secondary)]">
-                          <svg className="flex-shrink-0 text-[var(--color-accent)]" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                            <path d="M3.5 8L6.5 11L12.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                          </svg>
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </ScrollReveal>
-              </div>
-
-              {/* Right column */}
-              <div className="flex flex-col gap-8">
-                <ScrollReveal delay={150}>
-                  <div className="p-7 rounded-2xl bg-[var(--color-bg-primary)] border border-gray-100">
-                    <h3 className="font-heading font-bold text-lg mb-4 flex items-center gap-2">
-                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="var(--color-accent)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                        <circle cx="10" cy="10" r="8" />
-                        <polyline points="10 6 10 10 13 13" />
-                      </svg>
-                      Process
-                    </h3>
-                    <ol className="flex flex-col gap-3">
-                      {service.process.map((step, i) => (
-                        <li key={step} className="flex items-start gap-3 text-sm text-[var(--color-text-secondary)]">
-                          <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[var(--color-accent-light)] text-[var(--color-accent)] flex items-center justify-center text-xs font-display font-bold">
-                            {i + 1}
-                          </span>
-                          {step}
-                        </li>
-                      ))}
-                    </ol>
-                  </div>
-                </ScrollReveal>
-
-                <ScrollReveal delay={200}>
-                  <div className="p-7 rounded-2xl bg-[var(--color-accent-light)] border border-[var(--color-accent)]/10">
-                    <h3 className="font-heading font-bold text-lg mb-4 flex items-center gap-2">
-                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="var(--color-accent)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
-                        <polyline points="22 4 12 14.01 9 11.01" />
-                      </svg>
-                      Expected Outcomes
-                    </h3>
-                    <ul className="flex flex-col gap-2.5">
-                      {service.outcomes.map((item) => (
-                        <li key={item} className="flex items-center gap-2.5 text-sm text-[var(--color-text-primary)] font-medium">
-                          <svg className="flex-shrink-0 text-[var(--color-accent)]" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                            <path d="M3.5 8L6.5 11L12.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                          </svg>
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </ScrollReveal>
-
-                <ScrollReveal delay={250}>
-                  <Link href={service.ctaHref} className="btn-primary w-full justify-center py-4 rounded-xl">
-                    {service.ctaText}
-                    <svg className="btn-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                      <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </Link>
-                </ScrollReveal>
-              </div>
-            </div>
-          </div>
-        </section>
-      ))}
-
-      {/* FAQ */}
-      <section className="py-24 md:py-32 bg-white px-6 md:px-10">
-        <div className="mx-auto max-w-[760px]">
+      {/* Intro text */}
+      <section className="py-16 md:py-20 bg-white px-6 md:px-10">
+        <div className="mx-auto max-w-[720px] text-center">
           <ScrollReveal>
-            <div className="text-center mb-14">
-              <span className="overline text-[var(--color-accent)] mb-4 block">FAQ</span>
-              <h2 className="font-heading font-bold text-[clamp(2rem,4vw,2.5rem)] tracking-tight mb-4">
-                Frequently Asked Questions
+            <p className="text-lg md:text-xl text-[var(--color-text-secondary)] leading-relaxed">
+              Whether you&apos;re starting with an idea, building your product, going to market, or scaling an established business — we&apos;re here to help you move forward.
+            </p>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* The Four Stages */}
+      <section className="py-16 md:py-24 bg-[var(--color-bg-primary)] grid-pattern px-6 md:px-10">
+        <div className="mx-auto max-w-[1100px]">
+          <ScrollReveal>
+            <div className="text-center mb-16">
+              <span className="overline text-[var(--color-accent)] mb-4 block">Your Journey</span>
+              <h2 className="font-heading font-bold text-[clamp(2rem,4vw,3rem)] tracking-tight mb-4 text-[var(--color-text-primary)]">
+                Find Your Stage
               </h2>
               <div className="section-divider mx-auto" />
             </div>
           </ScrollReveal>
 
-          <div className="flex flex-col gap-3">
-            {faqs.map((faq, i) => (
-              <ScrollReveal key={i} delay={i * 80}>
-                <details className="faq-item group rounded-2xl border border-gray-100 hover:border-[var(--color-accent)]/15 transition-colors duration-300 overflow-hidden">
-                  <summary className="flex items-center justify-between p-6 cursor-pointer">
-                    <span className="font-heading font-semibold text-[0.95rem] pr-4">{faq.question}</span>
-                    <svg className="faq-chevron flex-shrink-0 text-[var(--color-text-muted)]" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                      <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </summary>
-                  <div className="px-6 pb-6 pt-0">
-                    <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
-                      {faq.answer}
+          {/* Stage Cards with connected timeline */}
+          <div className="relative">
+            {/* Horizontal connector — desktop */}
+            <div className="hidden lg:block absolute top-[52px] left-[12.5%] right-[12.5%] h-[2px] bg-gradient-to-r from-[var(--color-accent)]/10 via-[var(--color-accent)]/25 to-[var(--color-accent)]/10 z-0" />
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
+              {stages.map((stage, i) => (
+                <ScrollReveal key={stage.number} delay={i * 100}>
+                  <div
+                    className={`group relative rounded-2xl border transition-all duration-500 cursor-pointer overflow-hidden ${
+                      expandedStage === i
+                        ? 'bg-[var(--color-bg-dark)] border-[var(--color-accent)]/30 shadow-[0_20px_60px_rgba(0,194,168,0.12)]'
+                        : 'bg-white border-gray-100 hover:border-[var(--color-accent)]/20 hover:shadow-[0_12px_40px_rgba(0,0,0,0.06)]'
+                    }`}
+                    onClick={() => setExpandedStage(expandedStage === i ? null : i)}
+                  >
+                    {/* Stage number dot */}
+                    <div className="flex flex-col items-center pt-8 pb-6 px-6">
+                      <div className={`w-[72px] h-[72px] rounded-full flex items-center justify-center mb-5 transition-all duration-500 ${
+                        expandedStage === i
+                          ? 'bg-[var(--color-accent)]/15 text-[var(--color-accent)]'
+                          : 'bg-[var(--color-accent-light)] text-[var(--color-accent)] group-hover:bg-[var(--color-accent)]/10'
+                      }`}>
+                        {stage.icon}
+                      </div>
+
+                      <span className={`overline mb-2 transition-colors duration-300 ${
+                        expandedStage === i ? 'text-[var(--color-accent)]' : 'text-[var(--color-accent)]'
+                      }`}>
+                        Stage {stage.number}
+                      </span>
+
+                      <h3 className={`font-heading font-bold text-lg tracking-tight text-center mb-1.5 transition-colors duration-300 ${
+                        expandedStage === i ? 'text-white' : 'text-[var(--color-text-primary)]'
+                      }`}>
+                        {stage.label}
+                      </h3>
+
+                      <span className={`text-xs font-display font-semibold tracking-wider transition-colors duration-300 ${
+                        expandedStage === i ? 'text-[var(--color-accent)]' : 'text-[var(--color-text-muted)]'
+                      }`}>
+                        {stage.journey}
+                      </span>
+                    </div>
+
+                    {/* Expanded content */}
+                    <div className={`transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden ${
+                      expandedStage === i ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'
+                    }`}>
+                      <div className="px-6 pb-7">
+                        <div className="h-px bg-white/10 mb-5" />
+
+                        <p className="text-sm text-white/50 leading-relaxed mb-5 italic">
+                          {stage.positioning}
+                        </p>
+
+                        <ul className="flex flex-col gap-2 mb-6">
+                          {stage.services.map((service) => (
+                            <li key={service} className="flex items-center gap-2.5 text-sm text-white/70">
+                              <svg className="flex-shrink-0 text-[var(--color-accent)]" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                <path d="M3 7L5.5 9.5L11 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                              </svg>
+                              {service}
+                            </li>
+                          ))}
+                        </ul>
+
+                        <Link
+                          href="/contact"
+                          className="inline-flex items-center gap-2 text-sm font-display font-semibold text-[var(--color-accent)] hover:gap-3 transition-all duration-300"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          Explore
+                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </Link>
+                      </div>
+                    </div>
+
+                    {/* Expand hint when collapsed */}
+                    {expandedStage !== i && (
+                      <div className="px-6 pb-5 pt-0">
+                        <p className="text-xs text-[var(--color-text-muted)] text-center font-display">
+                          Click to explore →
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Not Sure Section */}
+      <section className="py-20 md:py-28 bg-white px-6 md:px-10">
+        <div className="mx-auto max-w-[640px] text-center">
+          <ScrollReveal>
+            <div className="p-10 md:p-14 rounded-3xl bg-[var(--color-bg-primary)] border border-gray-100">
+              <div className="w-14 h-14 rounded-full bg-[var(--color-accent-light)] flex items-center justify-center mx-auto mb-6">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M9 9a3 3 0 015.12 1c0 2-3.12 2-3.12 4" />
+                  <circle cx="12" cy="18" r="0.5" fill="var(--color-accent)" />
+                </svg>
+              </div>
+
+              <h2 className="font-heading font-bold text-2xl md:text-3xl tracking-tight mb-4 text-[var(--color-text-primary)]">
+                Not sure which stage you&apos;re in?
+              </h2>
+
+              <p className="text-[var(--color-text-secondary)] leading-relaxed mb-8">
+                Tell us what you&apos;re trying to build. We&apos;ll figure out the rest.
+              </p>
+
+              <Link href="/contact" className="btn-primary py-4 px-8 rounded-xl">
+                Talk to Larsva
+                <svg className="btn-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </Link>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* How We Help */}
+      <section className="py-20 md:py-28 bg-[var(--color-bg-dark)] grid-pattern-dark relative overflow-hidden px-6 md:px-10">
+        <div className="absolute top-[-20%] right-[-10%] w-[40%] h-[50%] bg-[radial-gradient(circle,rgba(0,194,168,0.06),transparent_70%)] rounded-full pointer-events-none" />
+
+        <div className="container-wide relative z-10">
+          <ScrollReveal>
+            <div className="text-center mb-16">
+              <span className="overline text-[var(--color-accent)] mb-4 block">How We Help</span>
+              <h2 className="font-heading font-bold text-[clamp(2rem,4vw,2.5rem)] tracking-tight mb-4 text-white">
+                Understand <span className="gradient-text">→</span> Plan <span className="gradient-text">→</span> Build <span className="gradient-text">→</span> Scale
+              </h2>
+              <div className="section-divider mx-auto" />
+            </div>
+          </ScrollReveal>
+
+          <div className="relative">
+            {/* Horizontal connector — desktop */}
+            <div className="hidden md:block absolute top-[48px] left-[12.5%] right-[12.5%] h-[2px] bg-gradient-to-r from-[var(--color-accent)]/15 via-[var(--color-accent)]/30 to-[var(--color-accent)]/15" />
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-6">
+              {processSteps.map((step, i) => (
+                <ScrollReveal key={step.title} delay={i * 120}>
+                  <div className="relative flex flex-col items-center text-center">
+                    <div className="relative z-10 w-24 h-24 rounded-full bg-[var(--color-bg-dark-card)] border border-white/8 flex items-center justify-center mb-6 transition-all duration-500 hover:border-[var(--color-accent)]/25 hover:shadow-[0_0_40px_rgba(0,194,168,0.08)]">
+                      <span className="font-heading font-bold text-xl text-[var(--color-accent)]">
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                    </div>
+
+                    <h3 className="font-heading font-bold text-lg text-white mb-2 tracking-tight">
+                      {step.title}
+                    </h3>
+                    <p className="text-white/40 text-sm leading-relaxed max-w-[240px]">
+                      {step.description}
                     </p>
                   </div>
-                </details>
-              </ScrollReveal>
-            ))}
+                </ScrollReveal>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* Final CTA */}
-      <section className="py-24 bg-[var(--color-bg-dark)] relative overflow-hidden">
-        <div className="absolute top-[-30%] right-[-10%] w-[40%] h-[60%] bg-[radial-gradient(circle,rgba(0,194,168,0.06),transparent_70%)] rounded-full pointer-events-none" />
-        <div className="mx-auto max-w-[600px] px-6 md:px-10 text-center relative z-10">
-          <h2 className="font-heading font-bold text-3xl tracking-tight mb-5 text-white">
-            Not sure which service is right for you?
-          </h2>
-          <p className="text-white/40 mb-10 leading-relaxed">
-            Request a founder consultation and we&apos;ll help you determine the best path forward for your startup idea.
-          </p>
-          <Link href="/contact" className="btn-primary text-lg py-4 px-10 rounded-xl">
-            Request Founder Consultation
-            <svg className="btn-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </Link>
+      <section className="py-24 md:py-32 bg-white px-6 md:px-10 relative overflow-hidden">
+        <div className="absolute top-[-20%] left-[-10%] w-[40%] h-[50%] bg-[radial-gradient(circle,rgba(0,194,168,0.04),transparent_70%)] rounded-full pointer-events-none" />
+
+        <div className="mx-auto max-w-[660px] text-center relative z-10">
+          <ScrollReveal>
+            <h2 className="font-heading font-bold text-[clamp(1.8rem,4vw,2.8rem)] tracking-tight mb-4 text-[var(--color-text-primary)] leading-tight">
+              You don&apos;t need everything figured out.
+            </h2>
+            <h3 className="font-heading font-semibold text-xl md:text-2xl tracking-tight mb-6 text-[var(--color-text-secondary)]">
+              You just need to know what you&apos;re trying to build.
+            </h3>
+
+            <p className="text-[var(--color-text-muted)] text-lg leading-relaxed mb-10">
+              Let&apos;s figure out the next step together.
+            </p>
+
+            <Link href="/contact" className="btn-primary text-lg py-5 px-10 rounded-xl">
+              Start a Conversation
+              <svg className="btn-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </Link>
+          </ScrollReveal>
         </div>
       </section>
     </>

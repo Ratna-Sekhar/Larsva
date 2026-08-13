@@ -3,8 +3,6 @@ import ProblemSection from '@/components/home/ProblemSection';
 import FrameworkSection from '@/components/home/FrameworkSection';
 import ServicesOverview from '@/components/home/ServicesOverview';
 import WhyLarsva from '@/components/home/WhyLarsva';
-import OpenOrbit from '@/components/home/OpenOrbit';
-import Testimonials from '@/components/home/Testimonials';
 import FinalCTA from '@/components/home/FinalCTA';
 
 export default function HomePage() {
@@ -15,8 +13,6 @@ export default function HomePage() {
       <FrameworkSection />
       <ServicesOverview />
       <WhyLarsva />
-      <OpenOrbit />
-      <Testimonials />
       <FinalCTA />
     </>
   );

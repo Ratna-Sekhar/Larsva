@@ -35,6 +35,8 @@ export default function Navbar() {
     return () => window.removeEventListener('resize', handleResize);
   }, [close]);
 
+  const isActive = (link: NavLinkType) => pathname === link.href;
+
   return (
     <header
       id="site-header"
@@ -59,10 +61,10 @@ export default function Navbar() {
         {/* Desktop Nav Links */}
         <ul className="hidden md:flex items-center gap-1">
           {navLinks.map((link) => (
-            <li key={link.href}>
+            <li key={link.href} className="relative">
               <Link
                 href={link.href}
-                className={`font-display font-medium text-[0.9rem] px-5 py-2.5 rounded-lg transition-all duration-300 ${pathname === link.href
+                className={`font-display font-medium text-[0.9rem] px-5 py-2.5 rounded-lg transition-all duration-300 inline-flex items-center gap-1.5 ${isActive(link)
                   ? scrolled
                     ? 'text-[var(--color-accent)] bg-[var(--color-accent-light)]'
                     : 'text-white bg-white/10'
@@ -116,12 +118,10 @@ export default function Navbar() {
       >
         <ul className="flex flex-col items-center gap-2 w-full">
           {navLinks.map((link) => (
-            <li key={link.href}>
+            <li key={link.href} className="w-full flex flex-col items-center">
               <Link
                 href={link.href}
-                className={`font-display font-semibold text-xl p-4 transition-colors duration-300 ${pathname === link.href
-                  ? 'text-[var(--color-accent)]'
-                  : 'text-white/80 hover:text-white'
+                className={`font-display font-semibold text-xl p-4 transition-colors duration-300 ${isActive(link) ? 'text-[var(--color-accent)]' : 'text-white/80 hover:text-white'
                   }`}
                 onClick={close}
               >

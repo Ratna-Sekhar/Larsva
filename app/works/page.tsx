@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import ScrollReveal from '@/components/common/ScrollReveal';
+import Testimonials from '@/components/home/Testimonials';
 import type { CaseStudy } from '@/types';
 
 export const metadata: Metadata = {
@@ -159,6 +160,9 @@ export default function WorksPage() {
           </div>
         </div>
       </section>
+
+      {/* Testimonials */}
+      <Testimonials />
 
       {/* Coming Soon */}
       <section className="py-20 md:py-24 px-6 md:px-10 bg-[var(--color-bg-dark)] grid-pattern-dark">

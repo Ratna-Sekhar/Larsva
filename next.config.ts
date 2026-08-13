@@ -5,6 +5,9 @@ const nextConfig: NextConfig = {
     // Add any external image domains here if needed
     // e.g., domains: ['example.com'],
   },
+  async redirects() {
+    return [];
+  },
   async headers() {
     return [
       {

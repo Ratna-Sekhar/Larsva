@@ -5,9 +5,16 @@ const footerLinks = {
   company: [
     { label: 'About Us', href: '/about' },
     { label: 'Services', href: '/services' },
-    { label: 'Products', href: '/products' },
     { label: 'Our Works', href: '/works' },
     { label: 'Contact Us', href: '/contact' },
+  ],
+  products: [
+    { label: 'All Products', href: '/products' },
+    { label: 'NotebookLM Crop', href: '/products/notebooklm-crop' },
+    { label: 'Smart Crop', href: '/products/smart-crop' },
+    { label: 'Image Reducer', href: '/products/image-reducer' },
+    { label: 'Image Converter', href: '/products/image-converter' },
+    { label: 'PDF to Images', href: '/products/pdf-to-images' },
   ],
   resources: [
     { label: 'The Open Orbit', href: '/#open-orbit' },
@@ -43,11 +50,27 @@ export default function Footer() {
             </a>
           </div>
 
-          <div className="flex gap-16 md:gap-20">
+          <div className="flex gap-12 md:gap-16 flex-wrap">
             <div>
               <h4 className="overline text-white/30 mb-5">Company</h4>
               <ul className="flex flex-col gap-3">
                 {footerLinks.company.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-sm text-white/50 hover:text-white transition-colors duration-300"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="overline text-white/30 mb-5">Products</h4>
+              <ul className="flex flex-col gap-3">
+                {footerLinks.products.map((link) => (
                   <li key={link.href}>
                     <Link
                       href={link.href}

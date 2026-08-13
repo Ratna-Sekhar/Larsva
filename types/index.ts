@@ -3,20 +3,6 @@ export interface NavLink {
   href: string;
 }
 
-export interface Service {
-  id: string;
-  title: string;
-  price: string;
-  priceNote?: string;
-  description: string;
-  highlights: string[];
-  whoFor: string;
-  deliverables: string[];
-  process: string[];
-  outcomes: string[];
-  ctaText: string;
-  ctaHref: string;
-}
 
 export interface Testimonial {
   id: string;
@@ -39,10 +25,7 @@ export interface CaseStudy {
   url?: string;
 }
 
-export interface FAQ {
-  question: string;
-  answer: string;
-}
+
 
 export interface ConsultationFormData {
   fullName: string;

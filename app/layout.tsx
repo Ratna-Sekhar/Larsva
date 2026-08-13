@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Space_Grotesk, Inter, Outfit } from 'next/font/google';
+import { Space_Grotesk, Inter } from 'next/font/google';
 import Navbar from '@/components/common/Navbar';
 import Footer from '@/components/common/Footer';
 import './globals.css';
@@ -16,11 +16,6 @@ const inter = Inter({
   display: 'swap',
 });
 
-const outfit = Outfit({
-  subsets: ['latin'],
-  variable: '--font-heading',
-  display: 'swap',
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://larsva.com'),
@@ -66,7 +61,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable} ${outfit.variable}`}>
+    <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable}`}>
       <head>
         <script
           type="application/ld+json"
