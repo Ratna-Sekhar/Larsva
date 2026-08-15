@@ -160,8 +160,8 @@ export async function submitConsultation(
       return { success: false, error: 'Please enter a valid email address.' };
     }
 
-    // Phone format validation (basic)
-    const phoneRegex = /^[\d\s+\-()]{7,20}$/;
+    // Phone format validation (country code + digits)
+    const phoneRegex = /^\+\d{1,4}\s[\d\s]{7,15}$/;
     if (!phoneRegex.test(data.phone)) {
       return { success: false, error: 'Please enter a valid phone number.' };
     }
