@@ -62,6 +62,8 @@ export default function AboutPage() {
         </div>
       </section>
 
+
+
       {/* Vision & Mission */}
       <section className="py-16 md:py-20 bg-[var(--color-bg-dark)] grid-pattern-dark relative overflow-hidden">
         <div className="absolute top-[-20%] right-[-10%] w-[40%] h-[50%] bg-[radial-gradient(circle,rgba(0,194,168,0.06),transparent_70%)] rounded-full pointer-events-none" />
