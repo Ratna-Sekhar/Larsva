@@ -47,12 +47,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/products/notebooklm-crop`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
       url: `${baseUrl}/products/image-reducer`,
       lastModified: new Date(),
       changeFrequency: 'monthly',

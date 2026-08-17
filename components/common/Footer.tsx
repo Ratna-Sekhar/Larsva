@@ -10,7 +10,6 @@ const footerLinks = {
   ],
   products: [
     { label: 'All Products', href: '/products' },
-    { label: 'NotebookLM Crop', href: '/products/notebooklm-crop' },
     { label: 'Smart Crop', href: '/products/smart-crop' },
     { label: 'Image Reducer', href: '/products/image-reducer' },
     { label: 'Image Converter', href: '/products/image-converter' },

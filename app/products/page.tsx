@@ -11,7 +11,6 @@ export const metadata: Metadata = {
     'Image Converter Online',
     'Image Size Reducer',
     'PDF to Images',
-    'NotebookLM Watermark Remover',
     'Larsva Tools',
   ],
   openGraph: {
@@ -22,15 +21,6 @@ export const metadata: Metadata = {
 };
 
 const tools = [
-  {
-    slug: 'notebooklm-crop',
-    title: 'NotebookLM Watermark Remover',
-    description:
-      'Automatically crop PDFs to a perfect 16:9 cinematic aspect ratio. Upload, process, and download — all in seconds.',
-    icon: '✂️',
-    iconBg: 'rgba(0, 194, 168, 0.15)',
-    status: 'live' as const,
-  },
   {
     slug: 'smart-crop',
     title: 'SMART CROP',
@@ -113,7 +103,7 @@ export default function ToolsPage() {
         <div className="absolute inset-0 grid-pattern-dark pointer-events-none" />
         <div className="mx-auto max-w-[1100px] relative z-10">
           <ScrollReveal>
-            <span className="overline text-[var(--color-accent)] mb-4 block">✦ Available Tools</span>
+            <span className="overline text-[var(--color-accent)] mb-4 block">✦ Some of Tools we have built</span>
             <h2 className="font-heading font-bold text-[clamp(1.8rem,3.5vw,2.5rem)] tracking-tight mb-10 text-white">
               What we&apos;ve built for you
             </h2>
