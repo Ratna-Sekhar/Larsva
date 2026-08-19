@@ -229,6 +229,10 @@ export default function DocForensicsPage() {
       // Fresh copy for pdf.js so its worker transfer doesn't affect our bytes
       const bytes = new Uint8Array(arrayBuffer.slice(0));
 
+      // Decode raw PDF content to string NOW — before pdf.js detaches the buffer.
+      // All pattern matching uses this pre-decoded string.
+      const rawFull = new TextDecoder('latin1').decode(bytes);
+
       // Load with pdf.js
       const pdfjsLib = window.pdfjsLib;
       pdfjsLib.GlobalWorkerOptions.workerSrc =
@@ -279,9 +283,8 @@ export default function DocForensicsPage() {
       let hasEmbedded = false;
       let isEncrypted = false;
 
-      // Detect encryption via raw bytes
-      const rawStr = new TextDecoder('latin1').decode(bytes.slice(0, 2048));
-      if (/\/Encrypt\b/.test(rawStr)) isEncrypted = true;
+      // Detect encryption via raw header
+      if (/\/Encrypt\b/.test(rawFull.slice(0, 2048))) isEncrypted = true;
 
       // Scan pages for fonts & JS
       const scanPages = Math.min(numPages, 10);
@@ -306,8 +309,7 @@ export default function DocForensicsPage() {
         } catch { /* skip page */ }
       }
 
-      // Raw text scan for structural features
-      const rawFull = new TextDecoder('latin1').decode(bytes);
+      // Raw text scan for structural features (using pre-decoded string)
       if (/\/JavaScript\b|\/JS\b/.test(rawFull)) hasJavaScript = true;
       if (/\/AcroForm\b/.test(rawFull)) hasForms = true;
       if (/\/EmbeddedFiles\b/.test(rawFull)) hasEmbedded = true;
