@@ -660,3 +660,176 @@
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }
 }
+
+/* ===== DOC FORENSICS — Results Styles ===== */
+
+/* ── Results Header ── */
+.forensics-results-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  background: rgba(30, 41, 59, 0.55);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.forensics-filename-badge {
+  font-size: 0.82rem;
+  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
+  font-weight: 400;
+  max-width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.forensics-complete-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #00C2A8;
+  background: rgba(0, 194, 168, 0.12);
+  border: 1px solid rgba(0, 194, 168, 0.2);
+  padding: 0.3rem 0.85rem;
+  border-radius: 100px;
+}
+
+/* ── Results Card ── */
+.forensics-results-card {
+  background: rgba(30, 41, 59, 0.55);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* ── Section Groups ── */
+.forensics-section-group {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.forensics-section-group.last {
+  border-bottom: none;
+}
+
+/* ── Section Title ── */
+.forensics-section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--color-accent, #00C2A8);
+  background: rgba(0, 194, 168, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ── Meta Table ── */
+.forensics-meta-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.forensics-meta-table tr {
+  transition: background 0.15s;
+}
+
+.forensics-meta-table tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.forensics-meta-table th,
+.forensics-meta-table td {
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.forensics-meta-table tr:last-child th,
+.forensics-meta-table tr:last-child td {
+  border-bottom: none;
+}
+
+.forensics-meta-table th {
+  width: 38%;
+  color: #64748b;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.forensics-meta-table td {
+  color: #e2e8f0;
+  font-weight: 400;
+  word-break: break-all;
+}
+
+/* ── Hash Values ── */
+.forensics-hash-value {
+  font-family: 'SF Mono', 'Consolas', 'Courier New', monospace;
+  font-size: 0.76rem;
+  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  display: inline-block;
+  word-break: break-all;
+}
+
+/* ── Security Status Colors ── */
+.forensics-safe {
+  color: #10b981;
+  font-weight: 600;
+}
+
+.forensics-warn {
+  color: #f59e0b;
+  font-weight: 600;
+}
+
+.forensics-danger {
+  color: #ef4444;
+  font-weight: 600;
+}
+
+/* ── Drop zone subtext ── */
+.tool-drop-subtext {
+  color: #475569;
+  font-size: 0.82rem;
+  margin-top: 0.25rem;
+}
+
+/* ── Responsive adjustments ── */
+@media (max-width: 640px) {
+  .forensics-results-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .forensics-meta-table th,
+  .forensics-meta-table td {
+    padding: 0.65rem 1rem;
+  }
+
+  .forensics-section-title {
+    padding: 0.65rem 1rem;
+  }
+
+  .forensics-filename-badge {
+    max-width: 100%;
+  }
+}

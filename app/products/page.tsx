@@ -11,6 +11,8 @@ export const metadata: Metadata = {
     'Image Converter Online',
     'Image Size Reducer',
     'PDF to Images',
+    'DocForensics',
+    'PDF Metadata Analyzer',
     'Larsva Tools',
   ],
   openGraph: {
@@ -55,6 +57,15 @@ const tools = [
       'Upload a PDF and extract every page as a high-quality image. Download individual slides or all at once.',
     icon: '🖼️',
     iconBg: 'rgba(14, 165, 233, 0.15)',
+    status: 'live' as const,
+  },
+  {
+    slug: 'doc-forensics',
+    title: 'DocForensics',
+    description:
+      'Upload a PDF to extract detailed metadata for forensic analysis — authorship, timestamps, security flags, file integrity hashes, and more.',
+    icon: '🔍',
+    iconBg: 'rgba(99, 102, 241, 0.15)',
     status: 'live' as const,
   },
   {
