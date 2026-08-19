@@ -25,7 +25,7 @@ export default function Hero() {
 
         {/* Subtext */}
         <p className="animate-fade-in-up delay-200 text-lg md:text-xl text-white/50 max-w-[640px] leading-relaxed mb-10">
-          Larsva helps ambitious working professionals and aspiring founders validate startup ideas, build MVPs, and launch professionally — without hiring a full team or taking unnecessary risks.
+          Larsva helps early stage startups and aspiring founders validate startup ideas, build MVPs, and launch professionally — without hiring a full team or taking unnecessary risks.
         </p>
 
         {/* CTAs */}
