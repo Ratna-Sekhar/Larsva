@@ -175,7 +175,7 @@ interface ForensicsSection {
 declare global {
   interface Window {
     pdfjsLib: {
-      getDocument: (src: { data: Uint8Array }) => { promise: Promise<PDFDocumentProxy> };
+      getDocument: (src: { data?: Uint8Array; url?: string }) => { promise: Promise<PDFDocumentProxy> };
       GlobalWorkerOptions: { workerSrc: string };
     };
   }
@@ -219,27 +219,33 @@ export default function DocForensicsPage() {
     try {
       const arrayBuffer = await file.arrayBuffer();
 
-      // Each consumer gets its own copy — crypto.subtle.digest and pdf.js
-      // both transfer (detach) the underlying ArrayBuffer, so sharing it crashes.
+      // Compute hashes — each gets an independent copy so neither detaches the original
       const [md5Hash, sha256Hash] = await Promise.all([
         md5FromBytes(new Uint8Array(arrayBuffer.slice(0))),
         sha256FromBytes(arrayBuffer.slice(0)),
       ]);
 
-      // Fresh copy for pdf.js so its worker transfer doesn't affect our bytes
-      const bytes = new Uint8Array(arrayBuffer.slice(0));
+      // Decode raw PDF content to a plain string for pattern matching.
+      // Done before pdf.js so we have a safe, non-buffer-backed string.
+      const rawFull = new TextDecoder('latin1').decode(new Uint8Array(arrayBuffer));
 
-      // Decode raw PDF content to string NOW — before pdf.js detaches the buffer.
-      // All pattern matching uses this pre-decoded string.
-      const rawFull = new TextDecoder('latin1').decode(bytes);
-
-      // Load with pdf.js
+      // Load with pdf.js via Blob URL — this avoids transferring / detaching
+      // our ArrayBuffer to the worker thread entirely.
       const pdfjsLib = window.pdfjsLib;
       pdfjsLib.GlobalWorkerOptions.workerSrc =
         'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
-      const pdf = await pdfjsLib.getDocument({ data: bytes }).promise;
+      const blob = new Blob([arrayBuffer], { type: 'application/pdf' });
+      const objectUrl = URL.createObjectURL(blob);
+      let pdf;
+      try {
+        pdf = await pdfjsLib.getDocument({ url: objectUrl }).promise;
+      } finally {
+        URL.revokeObjectURL(objectUrl);
+      }
+
       const { info } = await pdf.getMetadata();
+
 
       const safeGet = (key: string) => {
         const v = info[key];
