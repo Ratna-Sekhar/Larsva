@@ -132,8 +132,8 @@ async function md5FromBytes(bytes: Uint8Array): Promise<string> {
   return md5(str);
 }
 
-async function sha256FromBytes(bytes: Uint8Array): Promise<string> {
-  const hashBuffer = await crypto.subtle.digest('SHA-256', bytes.buffer as ArrayBuffer);
+async function sha256FromBytes(buffer: ArrayBuffer): Promise<string> {
+  const hashBuffer = await crypto.subtle.digest('SHA-256', buffer);
   return Array.from(new Uint8Array(hashBuffer))
     .map((b) => b.toString(16).padStart(2, '0'))
     .join('');
@@ -218,13 +218,16 @@ export default function DocForensicsPage() {
 
     try {
       const arrayBuffer = await file.arrayBuffer();
-      const bytes = new Uint8Array(arrayBuffer);
 
-      // Hashes
+      // Each consumer gets its own copy — crypto.subtle.digest and pdf.js
+      // both transfer (detach) the underlying ArrayBuffer, so sharing it crashes.
       const [md5Hash, sha256Hash] = await Promise.all([
-        md5FromBytes(bytes),
-        sha256FromBytes(bytes),
+        md5FromBytes(new Uint8Array(arrayBuffer.slice(0))),
+        sha256FromBytes(arrayBuffer.slice(0)),
       ]);
+
+      // Fresh copy for pdf.js so its worker transfer doesn't affect our bytes
+      const bytes = new Uint8Array(arrayBuffer.slice(0));
 
       // Load with pdf.js
       const pdfjsLib = window.pdfjsLib;
