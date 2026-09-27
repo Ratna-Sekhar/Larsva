@@ -10,10 +10,6 @@ const footerLinks = {
   ],
   products: [
     { label: 'All Products', href: '/products' },
-    { label: 'Smart Crop', href: '/products/smart-crop' },
-    { label: 'Image Reducer', href: '/products/image-reducer' },
-    { label: 'Image Converter', href: '/products/image-converter' },
-    { label: 'PDF to Images', href: '/products/pdf-to-images' },
   ],
   resources: [
     { label: 'The Open Orbit', href: '/#open-orbit' },

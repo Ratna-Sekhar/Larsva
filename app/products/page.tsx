@@ -5,12 +5,8 @@ import ScrollReveal from '@/components/common/ScrollReveal';
 export const metadata: Metadata = {
   title: 'Tools — Powerful Free Tools by Larsva',
   description:
-    'A growing suite of intelligent tools built for learners, educators, and professionals. Smart Crop, Image Reducer, Image Converter, PDF to Images and more.',
+    'A growing suite of intelligent tools built for learners, educators, and professionals. DocForensics, Data Visualizer and more.',
   keywords: [
-    'Smart Crop Tool',
-    'Image Converter Online',
-    'Image Size Reducer',
-    'PDF to Images',
     'DocForensics',
     'PDF Metadata Analyzer',
     'Larsva Tools',
@@ -18,47 +14,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Tools by Larsva — Powerful Free Tools for Professionals',
     description:
-      'Fast, free, and beautifully crafted tools for image cropping, conversion, compression, and PDF processing.',
+      'Fast, free, and beautifully crafted tools for professionals and educators.',
   },
 };
 
 const tools = [
-  {
-    slug: 'smart-crop',
-    title: 'SMART CROP',
-    description:
-      'Intelligent image cropping. Select from standard aspect ratios or set custom dimensions with full control over zoom and movement.',
-    icon: '📐',
-    iconBg: 'rgba(16, 185, 129, 0.15)',
-    status: 'live' as const,
-  },
-  {
-    slug: 'image-reducer',
-    title: 'Image Size Reducer',
-    description:
-      'Instantly reduce image file size while maintaining excellent quality. Perfect for web optimization.',
-    icon: '📉',
-    iconBg: 'rgba(245, 158, 11, 0.15)',
-    status: 'live' as const,
-  },
-  {
-    slug: 'image-converter',
-    title: 'Image Converter',
-    description:
-      'Convert images between PNG, JPG, WebP, BMP, TIFF, GIF, and ICO formats instantly.',
-    icon: '🔄',
-    iconBg: 'rgba(139, 92, 246, 0.15)',
-    status: 'live' as const,
-  },
-  {
-    slug: 'pdf-to-images',
-    title: 'PDF to Images',
-    description:
-      'Upload a PDF and extract every page as a high-quality image. Download individual slides or all at once.',
-    icon: '🖼️',
-    iconBg: 'rgba(14, 165, 233, 0.15)',
-    status: 'live' as const,
-  },
   {
     slug: 'doc-forensics',
     title: 'DocForensics',
