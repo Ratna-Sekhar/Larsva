@@ -3,7 +3,6 @@ export interface NavLink {
   href: string;
 }
 
-
 export interface Testimonial {
   id: string;
   name: string;
@@ -24,8 +23,6 @@ export interface CaseStudy {
   image?: string;
   url?: string;
 }
-
-
 
 export interface ConsultationFormData {
   fullName: string;

@@ -223,9 +223,7 @@ export default function ServicesPage() {
                         {stage.icon}
                       </div>
 
-                      <span className={`overline mb-2 transition-colors duration-300 ${
-                        expandedStage === i ? 'text-[var(--color-accent)]' : 'text-[var(--color-accent)]'
-                      }`}>
+                      <span className="overline mb-2 text-[var(--color-accent)]">
                         Stage {stage.number}
                       </span>
 
