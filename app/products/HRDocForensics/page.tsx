@@ -35,7 +35,7 @@ export default function HRDocForensicsPage() {
         }
       }, 3000);
 
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || '';
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://larsva.onrender.com';
       const response = await fetch(`${apiUrl}/api/hrdocforensics/analyze`, {
         method: 'POST',
         body: formData,
