@@ -10,10 +10,12 @@ const nextConfig: NextConfig = {
     return [];
   },
   async rewrites() {
+    const backendUrl = process.env.BACKEND_API_URL || 'http://127.0.0.1:8000';
+    const cleanUrl = backendUrl.endsWith('/') ? backendUrl.slice(0, -1) : backendUrl;
     return [
       {
         source: '/api/hrdocforensics/:path*',
-        destination: `${(process.env.BACKEND_API_URL || 'http://127.0.0.1:8000').replace(/\\/$/, '')}/api/hrdocforensics/:path*`, // Proxy to Python backend
+        destination: `${cleanUrl}/api/hrdocforensics/:path*`, // Proxy to Python backend
       },
     ];
   },
