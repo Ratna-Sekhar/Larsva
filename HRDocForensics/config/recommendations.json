@@ -1,0 +1,29 @@
+{
+  "bands": [
+    {
+      "max_authenticity": 4.0,
+      "key": "high_risk",
+      "label": "High Risk",
+      "show_cross_check": true,
+      "colour": "#ef4444",
+      "recommendation": "Cross-check with the candidate before proceeding. HRDocForensics is a prediction tool, and no automated analysis is 100% certain. A low score means the document shows indicators consistent with editing, not proof of forgery. We recommend a quick verification with the candidate:\n\n1. **Hold a video call.** Ask the candidate to share their screen and open the original offer email in their mailbox.\n2. **Check the sender.** The email should come from the employer's official business domain. Ask them to show the full sender address.\n3. **Re-download the attachment live.** Have them download the offer letter from that email during the call and compare it with the file they submitted. Run both through this tool to check whether they match.\n4. **Match the details.** Confirm the name, designation, joining date and compensation on screen against what they submitted.\n5. **Ask for the original email.** Request that they forward it to you with full headers, so you can keep it on file.\n\nDo not make a final decision on this score alone."
+    },
+    {
+      "max_authenticity": 7.9,
+      "key": "needs_attention",
+      "label": "Needs Attention",
+      "show_cross_check": false,
+      "colour": "#f59e0b",
+      "recommendation": "Some indicators were flagged. Review the findings below and use your judgement. This is a prediction, not a guarantee."
+    },
+    {
+      "max_authenticity": 10.0,
+      "key": "low_risk",
+      "label": "Low Risk",
+      "show_cross_check": false,
+      "colour": "#10b981",
+      "recommendation": "No strong indicators of tampering were found. This is a prediction, not a guarantee."
+    }
+  ],
+  "disclaimer": "This tool provides a probabilistic assessment, not a definitive judgement. A candidate-side check cannot rule out every kind of fabrication. Do not take any employment decision on this score alone."
+}

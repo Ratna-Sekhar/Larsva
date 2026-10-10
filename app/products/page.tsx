@@ -20,10 +20,10 @@ export const metadata: Metadata = {
 
 const tools = [
   {
-    slug: 'doc-forensics',
-    title: 'DocForensics',
+    slug: 'HRDocForensics',
+    title: 'HRDocForensics',
     description:
-      'Upload a PDF to extract detailed metadata for forensic analysis — authorship, timestamps, security flags, file integrity hashes, and more.',
+      'Upload a PDF to predict authenticity, detect editing anomalies, and generate data-driven counter-offer strategies for HR teams.',
     icon: '🔍',
     iconBg: 'rgba(99, 102, 241, 0.15)',
     status: 'live' as const,

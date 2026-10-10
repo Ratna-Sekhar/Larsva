@@ -1,0 +1,29 @@
+# ── Retention factor weights ──
+# Default weights for each factor in the counter-offer comparison.
+# Values: low | medium | high
+# If candidate_priorities are provided, matching factors are elevated to "high".
+
+defaults:
+  compensation: high
+  role_growth: medium
+  brand_reputation: medium
+  location: medium
+  work_mode: medium
+  stability_risk: medium
+  benefits: low
+  notice_timeline: low
+
+# Maps candidate_priorities selections to factor keys
+priority_to_factor:
+  compensation: compensation
+  "growth/title": role_growth
+  "work-from-home flexibility": work_mode
+  location: location
+  "company brand": brand_reputation
+  "job stability": stability_risk
+  learning: role_growth
+  "manager/team": role_growth
+
+# Internal equity risk threshold (%)
+# If counter-offer fixed CTC exceeds peer median by this %, flag it
+internal_equity_risk_threshold_pct: 15

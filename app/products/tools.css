@@ -593,3 +593,66 @@
     max-width: 100%;
   }
 }
+
+/* ── Advanced / Raw Metadata Sections ── */
+.forensics-section-group.advanced-section .forensics-section-title {
+  background: rgba(99, 102, 241, 0.06);
+  color: #818cf8;
+  border-top: 2px solid rgba(99, 102, 241, 0.15);
+}
+
+.forensics-section-group.advanced-section .forensics-meta-table td {
+  font-family: 'SF Mono', 'Consolas', 'Courier New', monospace;
+  font-size: 0.8rem;
+  color: #cbd5e1;
+}
+
+.forensics-section-group.advanced-section .forensics-meta-table th {
+  font-family: 'SF Mono', 'Consolas', 'Courier New', monospace;
+  font-size: 0.8rem;
+  color: #818cf8;
+}
+
+/* ── Collapsible section toggle ── */
+.forensics-section-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+}
+
+.forensics-section-toggle:hover {
+  opacity: 0.85;
+}
+
+.forensics-toggle-chevron {
+  font-size: 0.65rem;
+  color: #64748b;
+  transition: transform 0.25s ease;
+  margin-left: auto;
+  padding-left: 0.5rem;
+}
+
+.forensics-toggle-chevron.expanded {
+  transform: rotate(180deg);
+}
+
+/* ── Section count badge ── */
+.forensics-count-badge {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.15rem 0.5rem;
+  border-radius: 100px;
+  margin-left: 0.5rem;
+}
