@@ -13,7 +13,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/api/hrdocforensics/:path*',
-        destination: 'http://127.0.0.1:8000/api/hrdocforensics/:path*', // Proxy to Python backend
+        destination: `${process.env.BACKEND_API_URL || 'http://127.0.0.1:8000'}/api/hrdocforensics/:path*`, // Proxy to Python backend
       },
     ];
   },

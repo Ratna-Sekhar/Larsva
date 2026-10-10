@@ -24,7 +24,7 @@ export default function ResultsSection({ result, onReset }: Props) {
     fd.append('file1', hashFile1);
     fd.append('file2', hashFile2);
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000';
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || '';
       const res = await fetch(`${apiUrl}/api/hrdocforensics/compare-hash`, { method: 'POST', body: fd });
       setHashResult(await res.json());
     } catch (e) {
